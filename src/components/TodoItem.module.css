@@ -9,6 +9,11 @@
 .todo-item-text{
   flex-grow: 1;
 }
+.todo-item-text.completed {
+  text-decoration: line-through;
+}
+
+
 
 .todo-item-button{
   width: 30px;

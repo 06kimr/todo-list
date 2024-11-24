@@ -16,9 +16,6 @@
   flex-grow: 1;
 }
 
-.todo-item-text.completed {
-  text-decoration: line-through;
-}
 
 .todo-edit-input{
 flex-grow: 1;

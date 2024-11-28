@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, setFilter } from "../store/todoSlice";
+import {createTodo, setFilter } from "../store/todoSlice";
 
 function Controls() {
   const state = useSelector((state) => state.todo);
@@ -11,7 +11,8 @@ function Controls() {
   };
 
   const handleSubmit = () => {
-    dispatch(addTodo(text));
+    console.log(text);
+    dispatch(createTodo(text));
     setText("");
   };
 

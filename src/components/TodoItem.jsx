@@ -4,17 +4,21 @@ import { deleteTodo, toggleTodo, updateTodo } from "../store/todoSlice";
 
 function TodoItem({ id, text, completed }) {
   const dispatch = useDispatch();
+  const [newText, setNewText] = useState(text);
   const [edit, setEdit] = useState(false);
   const handleEdit = () => {
+    if (edit) {
+      dispatch(updateTodo({ id, text: newText }));
+    }
     setEdit((prev) => !prev);
   };
 
   const handleChange = (e) => {
-    dispatch(updateTodo({id, text: e.target.value}));
+    setNewText(e.target.value);
   };
 
   const handleToggle = () => {
-    dispatch(toggleTodo(id));
+    dispatch(toggleTodo({ id, completed: !completed }));
   };
 
   const handleDelete = () => {
@@ -30,17 +34,12 @@ function TodoItem({ id, text, completed }) {
       />
       {edit ? (
         <input
-          value={text}
+          value={newText}
           onChange={handleChange}
           className="grow border-[1px] border-solid border-gray-500 rounded-[6px] bg-transparent px-[12px] py-[4px] text-sm leading-[20px] text-white"
         />
       ) : (
-        <p
-          className={`grow ${completed ? "line-through" : ""}`}
-          completed={completed}
-        >
-          {text}
-        </p>
+        <p className={`grow ${completed ? "line-through" : ""}`}>{text}</p>
       )}
 
       <button

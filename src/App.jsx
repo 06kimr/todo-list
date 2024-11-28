@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import Controls from "./components/Controls";
 import Layout from "./components/Layout";
 import Title from "./components/Title";
